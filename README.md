@@ -28,14 +28,8 @@ The app should:
 
 ![Alt text](image.png)
 
+link to deployed page:
+https://sooey-99.github.io/expert-system/  
 
 
-- expert-system
-    - index.html
-    - README.md
-    - Assets
-        - script.js
-        - style.css
-    - Images
-        -05-third-party-apis-ho...demo.gif
-        - image.png 
+
