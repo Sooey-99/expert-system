@@ -26,3 +26,16 @@ The app should:
 * Persist events between refreshes of a page
 
 
+![Alt text](image.png)
+
+
+
+- expert-system
+    - index.html
+    - README.md
+    - Assets
+        - script.js
+        - style.css
+    - Images
+        -05-third-party-apis-ho...demo.gif
+        - image.png 
