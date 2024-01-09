@@ -25,3 +25,4 @@ The app should:
 
 * Persist events between refreshes of a page
 
+
