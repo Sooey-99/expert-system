@@ -32,7 +32,7 @@ function handleTimeBlockClick() {
     const inputField = $("<input>").attr({
       type: "text",
       class: "col-8 description",
-      value: $(this).find(".description").val(), // Pre-fill with existing event if any
+      value: $(this).find(".description").text(), // Pre-fill with existing event if any
     });
 
     // Append the input field to the clicked time block
@@ -45,8 +45,9 @@ function handleTimeBlockClick() {
     inputField.on("keypress", function (event) {
       if (event.key === "Enter") {
         const enteredEvent = $(this).val();
-        // Save the entered event (you can implement your save logic here)
-        // For now, let's update the description text
+        // Save the entered event to local storage
+        saveEvent($(this).parent().attr("id"), enteredEvent);
+        // Update the description text
         $(this).siblings(".description").text(enteredEvent);
         // Remove the input field
         $(this).remove();
@@ -55,9 +56,27 @@ function handleTimeBlockClick() {
   });
 }
 
+// Function to save an event to local storage
+function saveEvent(timeBlockId, event) {
+  const events = JSON.parse(localStorage.getItem("events")) || {};
+  events[timeBlockId] = event;
+  localStorage.setItem("events", JSON.stringify(events));
+}
+
+// Function to load events from local storage and update the time blocks
+function loadEvents() {
+  const events = JSON.parse(localStorage.getItem("events")) || {};
+
+  Object.keys(events).forEach(function (timeBlockId) {
+    const event = events[timeBlockId];
+    $("#" + timeBlockId + " .description").text(event);
+  });
+}
+
 // Call functions when the page is loaded
 document.addEventListener("DOMContentLoaded", function () {
   displayCurrentDay();
   colorCodeTimeBlocks();
   handleTimeBlockClick();
+  loadEvents();
 });
